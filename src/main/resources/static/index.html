@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)file:///E:/JAVA%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/StudyWorkSpace/%E8%AE%A1%E7%AE%97%E5%99%A8.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title></title>
+    <!--将按键内容以字符串形式存储在文字框中当按钮为“=”时，调用eval方法计算结果然后将结果输出文字框中-->
+    <script type="text/javascript">
+
+        var numresult;//计算结果
+        var str;//屏幕上显示的文本
+        var x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10 = x11 = x12 = x13 = x14 = x15 = x16 = 0;//每个按钮各自的点击次数
+        var xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16];
+
+        //计算结果
+        function onclicknum(nums, id) {
+            str = document.getElementById("nummessege");//屏幕上显示的输入文本
+            var xNum = 0;
+            for (var i = 0; i < xNums.length; i++) {
+                if (id == i + 1) {
+                    xNums[i] = xNums[i] + 1;
+                    xNum = xNums[i];
+                    break;
+                }
+            }
+            var showText = false;//是否展示描述文字
+            if (xNum % 2 != 0) {//点击按钮的累计次数为单数时为展示描述文字
+                showText = true;
+            }
+            onclickresult(str, nums, showText, id);
+        }
+
+        //重新计算
+        function onclickclear() {
+            str = document.getElementById("nummessege");
+            str.value = "";
+            x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10 = x11 = x12 = x13 = x14 = x15 = x16 = 0;
+            xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16];
+            var xId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+            for (var i = 0; i < xId.length; i++) {
+                clearX(xId[i]);
+            }
+        }
+
+        function clearX(id) {
+            var getId = "dj" + id;
+            document.getElementById(getId).innerHTML = "";
+        }
+
+        //实际计算结果的功能函数
+        function onclickresult(str, nums, showText, id) {
+            if (showText) {
+                if (str.value == "") {
+                    str.value = str.value + nums;//如果是第一次输入则直接展示第一次输入的数字
+                    numresult = eval(str.value);
+                    str.value = numresult;
+                } else {
+                    str.value = str.value + "+" + nums;//字符串拼接屏幕上显示的文本
+                    numresult = eval(str.value);
+                    str.value = numresult;
+                }
+                var getId = "dj" + id;//拼接：展示描述文字的span标签的id值
+                document.getElementById(getId).innerHTML = "这个是" + nums + "g/m³";//展示描述文字
+            } else {
+                str.value = str.value + "-" + nums;//字符串拼接屏幕上显示的文本
+                numresult = eval(str.value);
+                str.value = numresult;
+                clearX(id);
+            }
+
+        }
+    </script>
+    <style id="jsbin-css">
+        /*div, span {*/
+        /*margin: 0;*/
+        /*padding: 0;*/
+        /*font-weight: bold;*/
+        /*font: bold 16px Arial, sans-serif;*/
+        /*!*��ֹѡ���ı�*!*/
+        /*-moz-user-select: none;*/
+        /*-webkit-user-select: none;*/
+        /*-o-user-select: none;*/
+        /*user-select: none;*/
+        /*}*/
+
+        body {
+            background: radial-gradient(circle, #fff, #E0FFFF);
+            background: -webkit-radial-gradient(circle, #fff, #E0FFFF);
+            background: -o-radial-gradient(circle, #fff, #E0FFFF);
+            background: -moz-radial-gradient(circle, #fff, #E0FFFF);
+            background-size: cover;
+        }
+
+        #calculator {
+            width: 855px;
+            height: auto;
+            margin: 100px auto;
+            padding: 20px;
+            background: linear-gradient(#9dd2ea, #8bceec);
+            background: -o-linear-gradient(#9dd2ea, #8bceec);
+            background: -webkit-linear-gradient(#9dd2ea, #8bceec);
+            background: -moz-linear-gradient(#9dd2ea, #8bceec);
+            border-radius: 5px;
+            box-shadow: 0 7px 8px #0000ff
+        }
+
+        .keys {
+            overflow: hidden;
+        }
+
+        .keys, .clear {
+            /*float: left;*/
+            width: 66px;
+            height: 40px;
+            margin: 0 5px 10px 8px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 3px;
+            background: #eee;
+            box-shadow: 0 5px 1px #E6E6FA;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .keys:hover {
+            background: #87cefa;
+            box-shadow: 0 5px 1px #87cefa;
+            color: #fff;
+        }
+
+        .sign {
+            background: #fffacd;
+        }
+
+        .clear {
+            /*float: left;*/
+            background: #ffb6c1;
+            box-shadow: 0 5px 1px #ff86c1;
+        }
+
+        .clear:hover {
+            background: #ff96a1;
+            box-shadow: 0 5px 1px #ff4691;
+            color: #fff;
+        }
+
+        .show {
+            width: 213px;
+            height: 40px;
+            /*float: right;*/
+            margin: 0 16px 5px 0;
+            border-radius: 3px;
+            /*background: #999;*/
+            background: #FFFFFF;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: right;
+            padding-right: 10px;
+            box-shadow: inset 0 4px 5px #333;
+        }
+    </style>
+</head>
+<body bgcolor="#bbff77">
+
+<!--定义按键表格,每个按键对应一个事件触发-->
+<table id="calculator" border="1" align="center" bgcolor="#bbff77" style="height: 450px; width: 670px" ;
+       bordercolor="#F0FFFF">
+    <tbody>
+    <tr>
+        <td colspan="4">
+            <input type="text" class="show" id="nummessege" style="height: 90px; width: 750px; font-size: 50px"
+                   readonly="readonly ">
+        </td>
+        <td>
+            <input type="text" class="show" id="danwei" style="height: 90px; width: 150px; font-size: 30px" readonly="readonly "
+                   placeholder="单位：g/m³">
+        </td>
+    </tr>
+
+    <tr  align="center">
+        <td>
+            <input type="button" value="衣" class="sign" id="clothes" style="height: 70px; width: 90px; font-size: 35px">
+        </td>
+
+        <td>
+            <input type="button" value="" class="keys" id="1" onclick="onclicknum(40,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Clothing.png)">
+            <p>涤纶织物</p>
+            <span id="dj1"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="2" onclick="onclicknum(50,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Tee.png)">
+            <p>纯棉衣物</p>
+            <span id="dj2"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="3" onclick="onclicknum(60,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/shampoo.png)">
+            <p>洗衣液</p>
+            <span id="dj3"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="4" onclick="onclicknum(150,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(http://www.gloriam.cn/Content/Images/Page_Image/c_colthes.gif)">
+            <p>毛衣</p>
+            <span id="dj4"></span>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <input type="button" value="食" class="sign" id="food" style="height: 70px; width: 90px; font-size: 35px">
+        </td>
+
+        <td>
+            <input type="button" value="" class="keys" id="5" onclick="onclicknum(10,id)"
+                   style="height: 70px; width: 90px; font-size: 35px; BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/rice.png)">
+            <p>米饭</p>
+            <span id="dj5"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="6" onclick="onclicknum(20,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/smoke.png)">
+            <p>香烟</p>
+            <span id="dj6"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="7" onclick="onclicknum(30,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Fatmeat.png)">
+            <p>猪肉</p>
+            <span id="dj7"></span>
+        </td>
+        <td><input type="button" value="" class="keys" id="8" onclick="onclicknum(160,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>炸鸡</p>
+            <span id="dj8"></span>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <input type="button" value="住" class="sign" id="home" style="height: 70px; width: 90px; font-size: 35px">
+        </td>
+
+        <td>
+            <input type="button" value="" class="keys" id="9" onclick="onclicknum(70,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/water.png)">
+            <p>水</p>
+            <span id="dj9"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="10" onclick="onclicknum(80,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/lamp.png)">
+            <p>电</p>
+            <span id="dj10"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="11" onclick="onclicknum(90,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/gas.png)">
+            <p>煤气</p>
+            <span id="dj11"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="12" onclick="onclicknum(140,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/coal.png)">
+            <p>煤</p>
+            <span id="dj12"></span>
+        </td>
+    </tr>
+    <tr  align="center">
+        <td>
+            <input type="button" value="行" id="trip" class="sign" style="height: 70px; width: 90px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="13" onclick="onclicknum(100,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/air.png)">
+            <p>飞机</p>
+            <span id="dj13"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="14" onclick="onclicknum(200,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/train.png)">
+            <p>火车</p>
+            <span id="dj14"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="15" onclick="onclicknum(300,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/car.png)">
+            <p>汽车</p>
+            <span id="dj15"></span>
+        </td>
+        <td>
+            <input type="button" value="" class="keys" id="16" onclick="onclicknum(130,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>公交车</p>
+            <span id="dj16"></span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5" align="center">
+            <input type="button" value="重新计算" class="clear" id="clear" onclick="onclickclear()"
+                   style="height: 70px; width: 190px; font-size: 35px">
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
