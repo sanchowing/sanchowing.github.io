@@ -10,15 +10,24 @@
 
         var numresult;//计算结果
         var str;//屏幕上显示的文本
-        var x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10 = x11 = x12 = x13 = x14 = x15 = x16
-            = x17 = x18 = x19 = x20 = x21 = x22 = x23 = x24 = x25 = 0;//每个按钮各自的点击次数
-        var xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15
-            , x16, x17, x18, x19, x20, x21, x22, x23, x24, x25];
+        var x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10
+            = x11 = x12 = x13 = x14 = x15 = x16 = x17 = x18 = x19 = x20
+            = x21 = x22 = x23 = x24 = x25 = x26 = x27 = x28 = x29 = x30
+            = x31 = x32 = x33 = x34 = x35 = x36 = x37 = x38 = x39 = x40
+            = x41 = x42 = x43 = x44 = x45 = x46 = x47 = x48 = x49 = x50
+            = x51 = x52 = x53 = x54 = x55 = x56 = x57 = x58 = 0;//每个按钮各自的点击次数
+        var xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10,
+            x11, x12, x13, x14, x15, x16, x17, x18, x19, x20,
+            x21, x22, x23, x24, x25, x26, x27, x28, x29, x30,
+            x31, x32, x33, x34, x35, x36, x37, x38, x39, x40,
+            x41, x42, x43, x44, x45, x46, x47, x48, x49, x50,
+            x51, x52, x53, x54, x55, x56, x57, x58];
         var tabIdclothes = "tabIdclothes";
         var tabIdfood= "tabIdfood";
         var tabIdhome = "tabIdhome";
         var tabIdtrip = "tabIdtrip";
         var tabIduse = "tabIduse";
+
         //计算结果
         function onclicknum(nums, id) {
             str = document.getElementById("nummessege");//屏幕上显示的输入文本
@@ -41,17 +50,29 @@
         function onclickclear() {
             str = document.getElementById("nummessege");
             str.value = "";
-            x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10 = x11 = x12 = x13 = x14 = x15 = x16
-                = x17 = x18 = x19 = x20 = x21 = x22 = x23 = x24 = x25 = 0;//每个按钮各自的点击次数
-            xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15
-                , x16, x17, x18, x19, x20, x21, x22, x23, x24, x25];
-            var xId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
-                ,17, 18, 19, 20, 21, 22, 23, 24, 25];
+            x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10
+                = x11 = x12 = x13 = x14 = x15 = x16 = x17 = x18 = x19 = x20
+                = x21 = x22 = x23 = x24 = x25 = x26 = x27 = x28 = x29 = x30
+                = x31 = x32 = x33 = x34 = x35 = x36 = x37 = x38 = x39 = x40
+                = x41 = x42 = x43 = x44 = x45 = x46 = x47 = x48 = x49 = x50
+                = x51 = x52 = x53 = x54 = x55 = x56 = x57 = x58 = 0;//每个按钮各自的点击次数
+            xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10,
+                x11, x12, x13, x14, x15, x16, x17, x18, x19, x20,
+                x21, x22, x23, x24, x25, x26, x27, x28, x29, x30,
+                x31, x32, x33, x34, x35, x36, x37, x38, x39, x40,
+                x41, x42, x43, x44, x45, x46, x47, x48, x49, x50,
+                x51, x52, x53, x54, x55, x56, x57, x58];
+            var xId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+                41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+                51, 52, 53, 54, 55, 56, 57, 58];
             for (var i = 0; i < xId.length; i++) {
                 clearX(xId[i]);
             }
         }
-
+        //清除所有展示描述
         function clearX(id) {
             var getId = "dj" + id;
             document.getElementById(getId).innerHTML = "";
@@ -63,22 +84,32 @@
                 if (str.value == "") {
                     str.value = str.value + nums;//如果是第一次输入则直接展示第一次输入的数字
                     numresult = eval(str.value);
+                    numresult = floatFigure(numresult);
                     str.value = numresult;
                 } else {
                     str.value = str.value + "+" + nums;//字符串拼接屏幕上显示的文本
                     numresult = eval(str.value);
+                    numresult = floatFigure(numresult);
                     str.value = numresult;
                 }
                 var getId = "dj" + id;//拼接：展示描述文字的span标签的id值
-                document.getElementById(getId).innerHTML = "这个是" + nums + "g/m³";//展示描述文字
+                document.getElementById(getId).innerHTML = "这个是" + nums + "g";//展示描述文字
             } else {
                 str.value = str.value + "-" + nums;//字符串拼接屏幕上显示的文本
                 numresult = eval(str.value);
+                numresult = floatFigure(numresult);
                 str.value = numresult;
                 clearX(id);
             }
         }
-
+        //处理计算结果小数精度
+        function floatFigure(numresult) {
+            var numLen = numresult.toString().split(".");
+            if (numLen.length != 1) {//有小数
+                numresult = numresult.toFixed(2);
+            }
+            return numresult;
+        }
         //展示不同类别的table
         function tabShow(id){
             var arrTab = [tabIduse,tabIdfood,tabIdhome,tabIdtrip,tabIdclothes];
@@ -92,7 +123,7 @@
         }
 
     </script>
-    <style id="jsbin-css">
+    <style id="carbon-css">
 
         body {
             background: radial-gradient(circle, #fff, #bbff77);
@@ -103,7 +134,7 @@
         }
 
         #calculator {
-            width: 1143px;
+            width: 1200px;
             height: auto;
             margin: 0px auto;
             padding: 0px;
@@ -115,10 +146,10 @@
             box-shadow: 0 7px 8px #9dd2ea;
         }
         .typeTab {
-            width: 855px;
+            width: 1200px;
             height: auto;
             margin: 0px auto;
-            padding: 20px;
+            padding: 0px;
             background: linear-gradient(#bbff77, #bbff77);
             background: -o-linear-gradient(#bbff77, #bbff77);
             background: -webkit-linear-gradient(#bbff77, #bbff77);
@@ -131,13 +162,27 @@
             overflow: hidden;
         }
 
-        .keys, .clear {
+        .clear {
             /*float: left;*/
             width: 66px;
             height: 40px;
             margin: 0 5px 10px 8px;
             text-align: center;
             line-height: 40px;
+            border-radius: 3px;
+            background: #eee;
+            box-shadow: 0 5px 1px #E6E6FA;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .keys {
+            /*float: left;*/
+            /*width: 66px;*/
+            /*height: 40px;*/
+            /*margin: 0 0px 0px 0px;*/
+            /*text-align: center;*/
+            /*line-height: 40px;*/
             border-radius: 3px;
             background: #eee;
             box-shadow: 0 5px 1px #E6E6FA;
@@ -192,6 +237,11 @@
             background: none;
             color: black;
         }
+
+        .tabTdCls {
+            width : 240px;
+            align : center;
+        }
     </style>
 </head>
 <body bgcolor="#bbff77">
@@ -199,10 +249,10 @@
 <!--定义按键表格,每个按键对应一个事件触发-->
 <!--frame=void  border rules=none cellspacing=0 align=center-->
 <table id="calculator" border="1" align="center" bgcolor="#bbff77" style="height: 150px; width: 1200px" ;
-       frame=void  border rules=none cellspacing=0 align=center>
+>
     <tbody>
     <tr  align="center">
-        <td colspan="5" style="BACKGROUND-IMAGE: url(images/timg.jpg)">
+        <td colspan="5" style="BACKGROUND-IMAGE: url(images/footprint.jpg)">
             <input type="text" class="titleCls" id="title" style="height: 90px; width: 300px; font-size: 50px; border: 4px #FFFFF0 none;color:black" readonly="readonly "
                    placeholder="碳足迹计算器">
         </td>
@@ -218,7 +268,7 @@
         </td>
         <td>
             <input type="text" class="show" id="danwei" style="height: 90px; width: 150px; font-size: 30px" readonly="readonly "
-                   placeholder="单位：g/m³">
+                   placeholder="单位:g(克)">
         </td>
         <td align="center">
             <input type="button" value="重新计算" class="clear" id="clear" onclick="onclickclear()"
@@ -226,203 +276,416 @@
         </td>
     </tr>
     <!-- 分类 -->
-    <tr  align="center">
+    <tr align="center">
         <td width="240px">
             <input type="button" value="衣" class="sign" id="clothes" onclick="tabShow(id)"
-                   style="height: 70px; width: 90px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
+                   style="height: 70px; width: 200px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
         </td>
         <td width="240px">
             <input type="button" value="食" class="sign" id="food" onclick="tabShow(id)"
-                   style="height: 70px; width: 90px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
+                   style="height: 70px; width: 200px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
         </td>
         <td width="240px">
             <input type="button" value="住" class="sign" id="home" onclick="tabShow(id)"
-                   style="height: 70px; width: 90px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
+                   style="height: 70px; width: 200px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
         </td>
         <td width="240px">
             <input type="button" value="行" class="sign" id="trip" onclick="tabShow(id)"
-                   style="height: 70px; width: 90px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
+                   style="height: 70px; width: 200px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
         </td>
         <td width="240px">
             <input type="button" value="用" class="sign" id="use" onclick="tabShow(id)"
-                   style="height: 70px; width: 90px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
+                   style="height: 70px; width: 200px; font-size: 35px; font-style: unset; border:4px #FFFFF0 solid; color:#00BFFF">
         </td>
     </tr>
     </tbody>
 </table>
-<table class="typeTab" id="tabIdclothes" border="1" align="center" bgcolor="#bbff77" style="height: 350px; width: 1200px; display: none" ;
-       frame=void  border rules=none cellspacing=0 align=center>
+<table class="typeTab" id="tabIdclothes" border="1" align="center" bgcolor="#bbff77" style="height: auto; width: 1200px; display: none" ;
+>
     <tbody>
-    <tr align="center">
-        <td>
-            <input type="button" value="" class="keys" id="17" onclick="onclicknum(40,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Clothing.png)">
-            <p>裤子</p>
-            <span id="dj17"></span>
-        </td>
-        <td>
-            <input type="button" value="" class="keys" id="1" onclick="onclicknum(40,id)"
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="1" onclick="onclicknum(7710,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Clothing.png)">
             <p>涤纶织物</p>
             <span id="dj1"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="2" onclick="onclicknum(50,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="2" onclick="onclicknum(6400,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Tee.png)">
             <p>纯棉衣物</p>
             <span id="dj2"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="3" onclick="onclicknum(60,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="3" onclick="onclicknum(200,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/shampoo.png)">
             <p>洗衣液</p>
             <span id="dj3"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="4" onclick="onclicknum(150,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="4" onclick="onclicknum(100,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(http://www.gloriam.cn/Content/Images/Page_Image/c_colthes.gif)">
-            <p>毛衣</p>
+            <p>洗衣粉</p>
             <span id="dj4"></span>
         </td>
+        <td class="tabTdCls"></td>
     </tr>
     </tbody>
 </table>
-<table class="typeTab" id="tabIdfood" border="1" align="center" bgcolor="#bbff77" style="height: 350px; width: 1200px; display: none" ;
-       frame=void  border rules=none cellspacing=0 align=center>
+<table class="typeTab" id="tabIdfood" border="1" align="center" bgcolor="#bbff77" style="height: auto; width: 1200px; display: none" ;
+>
     <tbody>
-    <tr align="center">
-        <td>
-            <input type="button" value="食" class="keys" id="18" onclick="onclicknum(10,id)" style="height: 70px; width: 90px; font-size: 35px">
-            <p>牛排</p>
-            <span id="dj18"></span>
-        </td>
-        <td>
-            <input type="button" value="" class="keys" id="5" onclick="onclicknum(10,id)"
-                   style="height: 70px; width: 90px; font-size: 35px; BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/rice.png)">
-            <p>米饭</p>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="5" onclick="onclicknum(5400,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>牛肉</p>
             <span id="dj5"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="6" onclick="onclicknum(20,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/smoke.png)">
-            <p>香烟</p>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="6" onclick="onclicknum(7800,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>羊肉</p>
             <span id="dj6"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="7" onclick="onclicknum(30,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Fatmeat.png)">
-            <p>猪肉</p>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="7" onclick="onclicknum(500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px; BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/rice.png)">
+            <p>米饭</p>
             <span id="dj7"></span>
         </td>
-        <td><input type="button" value="" class="keys" id="8" onclick="onclicknum(160,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
-            <p>炸鸡</p>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="8" onclick="onclicknum(20,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/smoke.png)">
+            <p>香烟</p>
             <span id="dj8"></span>
         </td>
-    </tr>
-    </tbody>
-</table>
-<table class="typeTab" id="tabIdhome" border="1" align="center" bgcolor="#bbff77" style="height: 350px; width: 1200px; display: none" ;
-       frame=void  border rules=none cellspacing=0 align=center>
-    <tbody>
-    <tr align="center">
-        <td>
-            <input type="button" value="住" class="keys" id="19"  onclick="onclicknum(10,id)" style="height: 70px; width: 90px; font-size: 35px">
-            <p>天然气</p>
-            <span id="dj19"></span>
-        </td>
-        <td>
-            <input type="button" value="" class="keys" id="9" onclick="onclicknum(70,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/water.png)">
-            <p>水</p>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="9" onclick="onclicknum(2400,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/Fatmeat.png)">
+            <p>猪肉</p>
             <span id="dj9"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="10" onclick="onclicknum(80,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/lamp.png)">
-            <p>电</p>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="10" onclick="onclicknum(700,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>炸鸡</p>
             <span id="dj10"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="11" onclick="onclicknum(90,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/gas.png)">
-            <p>煤气</p>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="11" onclick="onclicknum(500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>鸡蛋</p>
             <span id="dj11"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="12" onclick="onclicknum(140,id)"
-                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/coal.png)">
-            <p>煤</p>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="12" onclick="onclicknum(2000,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>白酒</p>
             <span id="dj12"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="13" onclick="onclicknum(200,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>啤酒</p>
+            <span id="dj13"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="14" onclick="onclicknum(400,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>豆腐</p>
+            <span id="dj14"></span>
+        </td>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="15" onclick="onclicknum(500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>花生</p>
+            <span id="dj15"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="16" onclick="onclicknum(1600,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>饺子</p>
+            <span id="dj16"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="17" onclick="onclicknum(600,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>酸奶</p>
+            <span id="dj17"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="18" onclick="onclicknum(500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>牛奶</p>
+            <span id="dj18"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="19" onclick="onclicknum(900,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>蔬菜</p>
+            <span id="dj19"></span>
+        </td>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="20" onclick="onclicknum(589,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>面包</p>
+            <span id="dj20"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="21" onclick="onclicknum(1,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>矿泉水</p>
+            <span id="dj21"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="22" onclick="onclicknum(140,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>本地水果</p>
+            <span id="dj22"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="23" onclick="onclicknum(6600,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>外地水果</p>
+            <span id="dj23"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="24" onclick="onclicknum(800,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>小面</p>
+            <span id="dj24"></span>
+        </td>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="25" onclick="onclicknum(300,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/chicken.png)">
+            <p>零食</p>
+            <span id="dj25"></span>
         </td>
     </tr>
     </tbody>
 </table>
-<table class="typeTab" id="tabIdtrip" border="1" align="center" bgcolor="#bbff77" style="height: 350px; width: 1200px; display: none" ;
-       frame=void  border rules=none cellspacing=0 align=center>
-    <tr  align="center">
-        <td>
-            <input type="button" value="行" class="keys" id="20" onclick="onclicknum(10,id)" style="height: 70px; width: 90px; font-size: 35px">
-            <p>飞机</p>
-            <span id="dj20"></span>
+<table class="typeTab" id="tabIdhome" border="1" align="center" bgcolor="#bbff77" style="height: auto; width: 1200px; display: none" ;
+>
+    <tbody>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="26"  onclick="onclicknum(0.19,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>天然气</p>
+            <span id="dj26"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="13" onclick="onclicknum(100,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="27" onclick="onclicknum(1400,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/water.png)">
+            <p>水</p>
+            <span id="dj27"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="28" onclick="onclicknum(1500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/lamp.png)">
+            <p>电</p>
+            <span id="dj28"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="29" onclick="onclicknum(0.71,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/gas.png)">
+            <p>煤气</p>
+            <span id="dj29"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="30" onclick="onclicknum(32.6,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/coal.png)">
+            <p>取暖</p>
+            <span id="dj30"></span>
+        </td>
+    </tr>
+    <tr  class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="31"  onclick="onclicknum(643,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>装修用木材</p>
+            <span id="dj31"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="32"  onclick="onclicknum(15.4,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>装修用陶瓷</p>
+            <span id="dj32"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="33"  onclick="onclicknum(1.9,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>装修用钢材</p>
+            <span id="dj33"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="34"  onclick="onclicknum(24.7,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>装修用铝材</p>
+            <span id="dj34"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table class="typeTab" id="tabIdtrip" border="1" align="center" bgcolor="#bbff77" style="height: auto; width: 1200px; display: none" ;
+>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="35" onclick="onclicknum(275000,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>飞机</p>
+            <span id="dj35"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="36" onclick="onclicknum(10,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/air.png)">
-            <p>飞机</p>
-            <span id="dj13"></span>
+            <p>轮船</p>
+            <span id="dj36"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="14" onclick="onclicknum(200,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="37" onclick="onclicknum(1000,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/train.png)">
             <p>火车</p>
-            <span id="dj14"></span>
+            <span id="dj37"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="15" onclick="onclicknum(300,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="38" onclick="onclicknum(25000,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/car.png)">
-            <p>汽车</p>
-            <span id="dj15"></span>
+            <p>小汽车</p>
+            <span id="dj38"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="16" onclick="onclicknum(130,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="39" onclick="onclicknum(1000,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
-            <p>公交车</p>
-            <span id="dj16"></span>
+            <p>公共汽车</p>
+            <span id="dj39"></span>
+        </td>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="40" onclick="onclicknum(20,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>地铁</p>
+            <span id="dj40"></span>
         </td>
     </tr>
 </table>
-<table class="typeTab" id="tabIduse" border="1" align="center" bgcolor="#bbff77" style="height: 350px; width: 1200px; display: none" ;
-       frame=void  border rules=none cellspacing=0 align=center>
-    <tr  align="center">
-        <td>
-            <input type="button" value="用" class="keys" id="21"  onclick="onclicknum(10,id)" style="height: 70px; width: 90px; font-size: 35px">
-            <p>篮球</p>
-            <span id="dj21"></span>
+<table class="typeTab" id="tabIduse" border="1" align="center" bgcolor="#bbff77" style="height: auto; width: 1200px; display: none" ;
+>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="41"  onclick="onclicknum(22000,id)" style="height: 70px; width: 90px; font-size: 35px">
+            <p>乘坐电梯</p>
+            <span id="dj41"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="22" onclick="onclicknum(100,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="42" onclick="onclicknum(10,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/air.png)">
-            <p>棒球</p>
-            <span id="dj22"></span>
+            <p>塑料袋</p>
+            <span id="dj42"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="23" onclick="onclicknum(200,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="43" onclick="onclicknum(350,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/train.png)">
-            <p>足球</p>
-            <span id="dj23"></span>
+            <p>纸制品</p>
+            <span id="dj43"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="24" onclick="onclicknum(300,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="44" onclick="onclicknum(20,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/car.png)">
-            <p>游泳</p>
-            <span id="dj24"></span>
+            <p>一次性筷子</p>
+            <span id="dj44"></span>
         </td>
-        <td>
-            <input type="button" value="" class="keys" id="25" onclick="onclicknum(130,id)"
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="45" onclick="onclicknum(20,id)"
                    style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
-            <p>排球</p>
-            <span id="dj25"></span>
+            <p>洗发水</p>
+            <span id="dj45"></span>
+        </td>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="46" onclick="onclicknum(1500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>杯子</p>
+            <span id="dj46"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="47" onclick="onclicknum(200,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>一支笔</p>
+            <span id="dj47"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="48" onclick="onclicknum(10,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>牙刷</p>
+            <span id="dj48"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="49" onclick="onclicknum(15,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>洗脸</p>
+            <span id="dj49"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="50" onclick="onclicknum(380,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>洗澡</p>
+            <span id="dj50"></span>
+        </td>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="51" onclick="onclicknum(800,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>电视</p>
+            <span id="dj51"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="52" onclick="onclicknum(1500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>空调</p>
+            <span id="dj52"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="53" onclick="onclicknum(180,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>洗衣机</p>
+            <span id="dj53"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="54" onclick="onclicknum(500,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>电扇</p>
+            <span id="dj54"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="55" onclick="onclicknum(80,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>上厕所</p>
+            <span id="dj55"></span>
+        </td>
+    </tr>
+    <tr class="tabTrCls" align="center">
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="56" onclick="onclicknum(200,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>玩游戏</p>
+            <span id="dj56"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="57" onclick="onclicknum(200,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>手机</p>
+            <span id="dj57"></span>
+        </td>
+        <td class="tabTdCls">
+            <input type="button" value="" class="keys" id="58" onclick="onclicknum(1200,id)"
+                   style="height: 70px; width: 90px; font-size: 35px;BACKGROUND-IMAGE: url(https://www.carbonstop.net/media/computer/bus.png)">
+            <p>烧烤</p>
+            <span id="dj58"></span>
         </td>
     </tr>
 </table>
