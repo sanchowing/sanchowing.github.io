@@ -40,12 +40,11 @@
                 }
             }
             var showText = false;//是否展示描述文字
-            if (xNum % 2 != 0) {//点击按钮的累计次数为单数时为展示描述文字
+            if (xNum != 0) {//点击按钮的累计次数不为0时为展示描述文字
                 showText = true;
             }
             onclickresult(str, nums, showText, id);
         }
-
         //重新计算
         function onclickclear() {
             str = document.getElementById("nummessege");
@@ -80,7 +79,7 @@
 
         //实际计算结果的功能函数
         function onclickresult(str, nums, showText, id) {
-            if (showText) {
+            if (showText) {//展示描述文字时表示做加法
                 if (str.value == "") {
                     str.value = str.value + nums;//如果是第一次输入则直接展示第一次输入的数字
                     numresult = eval(str.value);
@@ -94,7 +93,7 @@
                 }
                 var getId = "dj" + id;//拼接：展示描述文字的span标签的id值
                 document.getElementById(getId).innerHTML = "这个是" + nums + "g";//展示描述文字
-            } else {
+            } else {//不展示描述文字时表示做减法
                 str.value = str.value + "-" + nums;//字符串拼接屏幕上显示的文本
                 numresult = eval(str.value);
                 numresult = floatFigure(numresult);
