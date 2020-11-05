@@ -10,34 +10,33 @@
 
         var numresult;//计算结果
         var str;//屏幕上显示的文本
-        var x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10
-            = x11 = x12 = x13 = x14 = x15 = x16 = x17 = x18 = x19 = x20
-            = x21 = x22 = x23 = x24 = x25 = x26 = x27 = x28 = x29 = x30
-            = x31 = x32 = x33 = x34 = x35 = x36 = x37 = x38 = x39 = x40
-            = x41 = x42 = x43 = x44 = x45 = x46 = x47 = x48 = x49 = x50
-            = x51 = x52 = x53 = x54 = x55 = x56 = x57 = x58 = x59 = x60
-            = x61 = x62 = x63 = 0;//每个按钮各自的点击次数
-        var xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10,
-            x11, x12, x13, x14, x15, x16, x17, x18, x19, x20,
-            x21, x22, x23, x24, x25, x26, x27, x28, x29, x30,
-            x31, x32, x33, x34, x35, x36, x37, x38, x39, x40,
-            x41, x42, x43, x44, x45, x46, x47, x48, x49, x50,
-            x51, x52, x53, x54, x55, x56, x57, x58, x59, x60,
-            x61, x62, x63];
+
         var tabIdclothes = "tabIdclothes";
         var tabIdfood= "tabIdfood";
         var tabIdhome = "tabIdhome";
         var tabIdtrip = "tabIdtrip";
         var tabIduse = "tabIduse";
 
+        //获取每个物品按钮的id并且初始化每个物品按钮点击次数为0
+        var arrIdAndClick = new Array();
+        window.onload = function(){
+            var clsKeys = document.getElementsByClassName("keys");
+            for(var i = 0 ; i < clsKeys.length ; i++){
+                var arr = new Array();
+                arr[0] = clsKeys[i].id;//物品按钮id
+                arr[1] = 0;//物品按钮点击次数
+                arrIdAndClick[i] = arr;
+            }
+        }
+
         //计算结果
         function onclicknum(nums, id) {
             str = document.getElementById("nummessege");//屏幕上显示的输入文本
             var xNum = 0;
-            for (var i = 0; i < xNums.length; i++) {
-                if (id == i + 1) {
-                    xNums[i] = xNums[i] + 1;
-                    xNum = xNums[i];
+            for (var i = 0; i < arrIdAndClick.length; i++) {
+                if (id == arrIdAndClick[i][0]) {
+                    arrIdAndClick[i][1] = arrIdAndClick[i][1] + 1;
+                    xNum = arrIdAndClick[i][1];
                     break;
                 }
             }
@@ -47,33 +46,19 @@
             }
             onclickresult(str, nums, showText, id);
         }
+
         //重新计算
         function onclickclear() {
             str = document.getElementById("nummessege");
             str.value = "";
-            x1 = x2 = x3 = x4 = x5 = x6 = x7 = x8 = x9 = x10
-                = x11 = x12 = x13 = x14 = x15 = x16 = x17 = x18 = x19 = x20
-                = x21 = x22 = x23 = x24 = x25 = x26 = x27 = x28 = x29 = x30
-                = x31 = x32 = x33 = x34 = x35 = x36 = x37 = x38 = x39 = x40
-                = x41 = x42 = x43 = x44 = x45 = x46 = x47 = x48 = x49 = x50
-                = x51 = x52 = x53 = x54 = x55 = x56 = x57 = x58 = x59 = x60
-                = x61 = x62 = x63= 0;//每个按钮各自的点击次数
-            xNums = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10,
-                x11, x12, x13, x14, x15, x16, x17, x18, x19, x20,
-                x21, x22, x23, x24, x25, x26, x27, x28, x29, x30,
-                x31, x32, x33, x34, x35, x36, x37, x38, x39, x40,
-                x41, x42, x43, x44, x45, x46, x47, x48, x49, x50,
-                x51, x52, x53, x54, x55, x56, x57, x58, x59, x60,
-                x61, x62, x63];
-            var xId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-                21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-                31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-                41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
-                51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-                61, 62, 63];
-            for (var i = 0; i < xId.length; i++) {
-                clearX(xId[i]);
+            //重置每个物品按钮的点击次数为0
+            for (var i = 0; i < arrIdAndClick.length; i++) {
+                arrIdAndClick[i][1] = 0;
+            }
+            //重置每个物品的文字描述为空
+            for (var i = 0; i < arrIdAndClick.length; i++) {
+                var xId = arrIdAndClick[i][0];
+                clearX(xId);
             }
         }
         //清除所有展示描述
